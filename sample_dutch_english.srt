@@ -1,0 +1,31 @@
+1
+00:00:01,000 --> 00:00:04,000
+Hello and welcome to this short video.
+
+2
+00:00:04,500 --> 00:00:08,000
+Today we'll be discussing artificial intelligence.
+
+3
+00:00:08,500 --> 00:00:12,000
+AI is becoming increasingly important in our daily lives.
+
+4
+00:00:12,500 --> 00:00:16,000
+It can assist us with translation, as shown in this example.
+
+5
+00:00:16,500 --> 00:00:21,000
+Modern AI models can now perform complex tasks.
+
+6
+00:00:21,500 --> 00:00:26,000
+They can understand text, images, and even videos.
+
+7
+00:00:26,500 --> 00:00:31,000
+This is just the beginning of a new technological revolution.
+
+8
+00:00:31,500 --> 00:00:35,000
+Thanks for watching and until next time!
