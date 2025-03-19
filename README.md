@@ -8,3 +8,7 @@ source env/bin/activate
 pip install langchain langchain_community pydantic tqdm
 pip install -U langchain-ollama
 
+
+usage:
+python translate.py sample_dutch.srt -i Dutch -o English -m "deepseek-r1:7b"
+

@@ -16,6 +16,7 @@ from langchain.output_parsers import PydanticOutputParser
 from langchain.schema import AIMessage, HumanMessage
 from pydantic import BaseModel, Field
 
+
 class SubtitleEntry(BaseModel):
     """Model for a subtitle entry."""
     index: int = Field(description="The subtitle index number")
@@ -220,6 +221,22 @@ async def process_subtitles(subtitles, batch_size, individual, source_lang, targ
         # Unload the model
         subprocess.run(["ollama", "stop", model_name])
 
+# Check if ollama serve is running
+def ensure_ollama_serve():
+    try:
+        # Check if 'ollama serve' is running
+        result = subprocess.run(["pgrep", "-f", "ollama serve"], capture_output=True, text=True)
+        if result.returncode != 0:
+            print("❌ 'ollama serve' is not running.")
+            print("➡️  Please start it manually by running: `ollama serve`")
+            sys.exit(1)
+        else:
+            print("✅ 'ollama serve' is already running.")
+    except Exception as e:
+        print(f"⚠️ Error checking 'ollama serve': {e}")
+        sys.exit(1)
+
+
 async def main_async():
     parser = argparse.ArgumentParser(description='Translate SRT subtitle files using LangChain and Ollama')
     parser.add_argument('file', help='SRT file to translate')
@@ -249,6 +266,8 @@ async def main_async():
         base_name, ext = os.path.splitext(args.file)
         args.output_file = f"{base_name}_{args.output_language.lower()}{ext}"
     
+    ensure_ollama_serve()
+
     print(f"Parsing subtitle file: {args.file}")
     subtitles = parse_srt(args.file)
     print(f"Found {len(subtitles)} subtitle entries")
